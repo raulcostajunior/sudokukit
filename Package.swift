@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "sudokukit",
+    platforms: [
+        .macOS(.v10_13),  // Also supports Linux and Windows
+        .iOS(.v12)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
