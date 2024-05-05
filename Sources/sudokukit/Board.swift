@@ -1,9 +1,15 @@
 struct Board {
 
+  static let dimension = 9
+
   private var cells: [[Int]]
 
   init() {
-    cells = Array(repeating: Array(repeating: 0, count: 9), count: 9)
+    cells = Array(repeating: Array(repeating: 0, count: Board.dimension), count: Board.dimension)
+  }
+
+  init(board: Board) {
+    cells = board.cells
   }
 
   subscript(row: Int, col: Int) -> Int {
@@ -11,16 +17,9 @@ struct Board {
       return cells[row][col]
     }
     set {
+      // TODO: only assign if newValue doesn't violate the Board invariants
       cells[row][col] = newValue
     }
-  }
-
-  func isValid(value: Int, row: Int, col: Int) -> Bool {
-    return !cells[row].contains(value) && !cells.contains { $0[col] == value }
-  }
-
-  func isSolved() -> Bool {
-    return cells.allSatisfy { $0.allSatisfy { $0 != 0 } }
   }
 
 }
