@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "sudokukit"),
         .testTarget(
-            name: "sudokukitTests",
+            name: "BoardTests",
             dependencies: ["sudokukit"]),
     ]
 )
